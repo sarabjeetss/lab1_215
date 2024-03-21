@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>sarab Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe Script', cursive;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .title {
+            font-size: 36px;
+            letter-spacing: 3px;
+            border-bottom: 2px solid #555;
+            display: inline-block;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .calculator-container {
+            width: 320px;
+            margin: 0 auto;
+        }
+        .calculator {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .calculator-screen {
+            width: 100%;
+            height: 60px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+            background-color: white;
+        }
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .button {
+            flex: 1;
+            margin: 0 5px;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+        // Recursive factorial function (tail-recursive)
+        function factorial(n, accumulator = 1) {
+            if (n === 0) {
+                return accumulator;
+            }
+            return factorial(n - 1, n * accumulator);
+        }
+ 
+        // Calculator functions
+        function clearScreen() {
+            document.getElementById('calculator-screen').value = '';
+        }
+ 
+        function appendToScreen(value) {
+            document.getElementById('calculator-screen').value += value;
+        }
+ 
+        function calculate() {
+            var expression = document.getElementById('calculator-screen').value;
+            var result = eval(expression);
+            document.getElementById('calculator-screen').value = result;
+        }
+    </script>
+</head>
+<body>
+    <div class="title"> Calculator</div>
+    <div class="calculator-container">
+        <div class="calculator">
+            <input id="calculator-screen" class="calculator-screen" type="text" readonly>
+            <div class="button-row">
+                <button class="button" onclick="appendToScreen('7')">7</button>
+                <button class="button" onclick="appendToScreen('8')">8</button>
+                <button class="button" onclick="appendToScreen('9')">9</button>
+                <button class="button" onclick="appendToScreen('/')">/</button>
+            </div>
+            <div class="button-row">
+                <button class="button" onclick="appendToScreen('4')">4</button>
+                <button class="button" onclick="appendToScreen('5')">5</button>
+                <button class="button" onclick="appendToScreen('6')">6</button>
+                <button class="button" onclick="appendToScreen('*')">*</button>
+            </div>
+            <div class="button-row">
+                <button class="button" onclick="appendToScreen('1')">1</button>
+                <button class="button" onclick="appendToScreen('2')">2</button>
+                <button class="button" onclick="appendToScreen('3')">3</button>
+                <button class="button" onclick="appendToScreen('-')">-</button>
+            </div>
+            <div class="button-row">
+                <button class="button" onclick="appendToScreen('0')">0</button>
+                <button class="button" onclick="clearScreen()">C</button>
+                <button class="button" onclick="calculate()">=</button>
+                <button class="button" onclick="appendToScreen('+')">+</button>
+            </div>
+           
+        </div>
+    </div>
+</body>
+</html>
